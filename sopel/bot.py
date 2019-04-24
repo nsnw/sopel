@@ -20,7 +20,7 @@ from sopel import irc
 from sopel.db import SopelDB
 from sopel.tools import stderr, Identifier
 import sopel.tools.jobs
-from sopel.trigger import PreTrigger, Trigger
+from sopel.trigger import Trigger
 from sopel.module import NOLIMIT
 from sopel.logger import get_logger
 import sopel.loader
@@ -673,7 +673,8 @@ class Sopel(irc.Bot):
         :param str module_name: the module requesting the capability
         :param str capability: the capability requested, optionally prefixed with ``+`` or ``=``
         :param str arg: arguments for the capability request
-        :param function failure_callback: a function that will be called if the capability request fails
+        :param function failure_callback: a function that will be called if the capability request
+            fails
         :param function success_callback: a function that will be called if the capability is
             successfully requested
         """
