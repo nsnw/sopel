@@ -185,7 +185,8 @@ class Sopel(irc.Bot):
         than 510 characters, any remaining characters will not be sent.
 
         :param collections.Iterable args: an iterable of strings, which will be joined by spaces
-        :param str text: a string that will be prepended with a ``:`` and added to the end of the command
+        :param str text: a string that will be prepended with a ``:`` and added to the end of
+            the command
         """
         irc.Bot.write(self, args, text=text)
 
@@ -260,7 +261,8 @@ class Sopel(irc.Bot):
         :param collections.Iterable callables: an iterable of callables to register
         :param collections.Iterable jobs: an iterable of functions to periodically invoke
         :param collections.Iterable shutdowns: an iterable of functions to call on shutdown
-        :param collections.Iterable urls: an iterable of functions to call when matched against a URL
+        :param collections.Iterable urls: an iterable of functions to call when matched against a
+            URL
         """
 
         # Append module's shutdown function to the bot's list of functions to
@@ -334,7 +336,7 @@ class Sopel(irc.Bot):
 
         :param str text: the text to send
         :param str recipient: the message recipient
-        :param int max_messages: the maximum number of messages to break the text into, defaults to 1
+        :param int max_messages: the maximum number of messages to break the text into
         """
         excess = ''
         if not isinstance(text, unicode):
@@ -440,7 +442,8 @@ class Sopel(irc.Bot):
 
         :param function func: the function to call
         :param SopelWrapper sopel: a SopelWrapper instance
-        :param Trigger trigger: the Trigger object for the line from the server that triggered this call
+        :param Trigger trigger: the Trigger object for the line from the server that triggered
+            this call
         """
         nick = trigger.nick
         current_time = time.time()
@@ -516,7 +519,8 @@ class Sopel(irc.Bot):
                 self._times[trigger.sender][func] = current_time
 
     def dispatch(self, pretrigger):
-        """Match an incoming, parsed message from the server and dispatch it to any registered callables.
+        """Match an incoming, parsed message from the server and dispatch it to any registered
+        callables.
 
         :param PreTrigger pretrigger: a parsed message from the server
         """
@@ -670,7 +674,8 @@ class Sopel(irc.Bot):
         :param str capability: the capability requested, optionally prefixed with ``+`` or ``=``
         :param str arg: arguments for the capability request
         :param function failure_callback: a function that will be called if the capability request fails
-        :param function success_callback: a function that will be called if the capability is successfully requested
+        :param function success_callback: a function that will be called if the capability is
+            successfully requested
         """
         # TODO raise better exceptions
         cap = capability[1:]
