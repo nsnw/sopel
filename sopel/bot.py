@@ -327,6 +327,7 @@ class Sopel(irc.Bot):
         :param str recipient: the message recipient
         :param int max_messages: the maximum number of messages to break the
                                  text into
+                                 
         In the context of a triggered callable, the ``recipient`` defaults to
         the channel (or nickname, if a private message) from which the message
         was received.
