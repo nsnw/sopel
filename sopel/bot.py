@@ -328,7 +328,11 @@ class Sopel(irc.Bot):
         :param str recipient: the message recipient
         :param int max_messages: the maximum number of messages to break the
                                  text into
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> 02b29eaef57078b94f9a010b298cdb1ee4c7dbe6
         In the context of a triggered callable, the ``recipient`` defaults to
         the channel (or nickname, if a private message) from which the message
         was received.
@@ -393,6 +397,9 @@ class Sopel(irc.Bot):
 
     def notice(self, text, dest):
         """Send an IRC NOTICE (of ``text``) to a user or a channel (``dest``).
+
+        :param str text: the text to send in the NOTICE
+        :param str dest: the destination of the NOTICE
 
         :param str text: the text to send in the NOTICE
         :param str dest: the destination of the NOTICE
@@ -651,12 +658,19 @@ class Sopel(irc.Bot):
         :param str capability: the capability requested, optionally prefixed
                                with ``+`` or ``=``
         :param str arg: arguments for the capability request
+<<<<<<< HEAD
         :param failure_callback: a function that will be called if the
                                  capability request fails
         :type failure_callback: :term:`function`
         :param success_callback: a function that will be called if the
                                  capability is successfully requested
         :type success_callback: :term:`function`
+=======
+        :param function failure_callback: a function that will be called if the
+                                          capability request fails
+        :param function success_callback: a function that will be called if the
+                                          capability is successfully requested
+>>>>>>> 02b29eaef57078b94f9a010b298cdb1ee4c7dbe6
 
         By prefixing the capability with `-`, it will be ensured that the
         capability is not enabled. Similarly, by prefixing the capability with
@@ -727,8 +741,12 @@ class Sopel(irc.Bot):
 
         :param pattern: compiled regex pattern to register
         :type pattern: :ref:`re.Pattern <python:re-objects>`
+<<<<<<< HEAD
         :param callback: callable object to handle matching URLs
         :type callback: :term:`function`
+=======
+        :param function callback: callable object to handle matching URLs
+>>>>>>> 02b29eaef57078b94f9a010b298cdb1ee4c7dbe6
 
         .. versionadded:: 7.0
 
