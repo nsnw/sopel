@@ -43,3 +43,9 @@ sopel.formatting
 .. automodule:: sopel.formatting
    :members:
    :undoc-members:
+
+sopel.logger
+-----------------
+.. automodule:: sopel.logger
+   :members:
+   :undoc-members:
