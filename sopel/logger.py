@@ -5,6 +5,16 @@ import logging
 
 
 class IrcLoggingHandler(logging.Handler):
+    """Logging handler for IRC logs.
+
+    :param bot: the Sopel instance
+    :type bot: :class:`~sopel.bot.Sopel`
+    :param int level: the logging level to use
+
+    This class extends Python's generic logging handler, adding the passed bot
+    object. This is then used to log output from Sopel to a configured IRC
+    channel.
+    """
     def __init__(self, bot, level):
         super(IrcLoggingHandler, self).__init__(level)
         self._bot = bot
@@ -21,6 +31,14 @@ class IrcLoggingHandler(logging.Handler):
 
 
 class ChannelOutputFormatter(logging.Formatter):
+    """Logging formatter for IRC logs.
+
+    :param str fmt: the logging format to use
+    :param str datefmt: the date format to use for log messages
+
+    This class extends Python's generic logging formatter by adding a custom log
+    formatter, and optionally a custom date formatter.
+    """
     def __init__(self, fmt='[%(filename)s] %(message)s', datefmt=None):
         super(ChannelOutputFormatter, self).__init__(fmt=fmt, datefmt=datefmt)
 
@@ -31,6 +49,15 @@ class ChannelOutputFormatter(logging.Formatter):
 
 
 def setup_logging(bot):
+    """Set up logging for the bot.
+
+    :param bot: the Sopel instance
+    :type bot: :class:`~sopel.bot.Sopel`
+
+    Sets up logging for the bot, including output to an IRC channel if such a
+    channel is configured.
+    """
+    # Set up the basic logging configuration based on the bot's configuration
     base_level = bot.config.core.logging_level or 'WARNING'
     base_format = bot.config.core.logging_format
     base_datefmt = bot.config.core.logging_datefmt
@@ -40,7 +67,12 @@ def setup_logging(bot):
     if base_datefmt:
         base_params['datefmt'] = base_datefmt
     logging.basicConfig(**base_params)
+
+    # Get the logger object for Sopel
     logger = logging.getLogger('sopel')
+
+    # If a logging channel is specified in the configuration, set up the IRC
+    # channel logging too
     if bot.config.core.logging_channel:
         channel_level = bot.config.core.logging_channel_level or base_level
         channel_format = bot.config.core.logging_channel_format or base_format
@@ -58,6 +90,8 @@ def setup_logging(bot):
 
 def get_logger(name=None):
     """Return a logger for a module, if the name is given.
+
+    :param str name: the module to return a logger for
 
     This is equivalent to `logging.getLogger('sopel.modules.' + name)` when
     name is given, and `logging.getLogger('sopel')` when it is not. The latter
