@@ -41,23 +41,23 @@ if sys.version_info.major >= 3:
 # Color names are as specified at http://www.mirc.com/colors.html
 
 CONTROL_NORMAL = '\x0f'
-"""The control code to reset formatting"""
+"""The control code to reset formatting."""
 CONTROL_COLOR = '\x03'
-"""The control code to start or end color formatting"""
+"""The control code to start or end color formatting."""
 CONTROL_HEX_COLOR = '\x04'
-"""The control code to start or end hexadecimal color formatting"""
+"""The control code to start or end hexadecimal color formatting."""
 CONTROL_BOLD = '\x02'
-"""The control code to start or end bold formatting"""
+"""The control code to start or end bold formatting."""
 CONTROL_ITALIC = '\x1d'
-"""The control code to start or end italic formatting"""
+"""The control code to start or end italic formatting."""
 CONTROL_UNDERLINE = '\x1f'
-"""The control code to start or end underlining"""
+"""The control code to start or end underlining."""
 CONTROL_STRIKETHROUGH = '\x1e'
-"""The control code to start or end strikethrough formatting"""
+"""The control code to start or end strikethrough formatting."""
 CONTROL_MONOSPACE = '\x11'
-"""The control code to start or end monospace formatting"""
+"""The control code to start or end monospace formatting."""
 CONTROL_REVERSE = '\x16'
-"""The control code to start or end reverse-color formatting"""
+"""The control code to start or end reverse-color formatting."""
 
 
 # TODO when we can move to 3.3+ completely, make this an Enum.
@@ -119,6 +119,10 @@ def _get_color(color):
 def color(text, fg=None, bg=None):
     """Return the text, with the given colors applied in IRC formatting.
 
+    :param str text: a string of text to apply color formatting to
+    :param int fg: the color code to use for the text's foreground
+    :param int bg: the color code to use for the text's background
+
     The color can be a string of the color name, or an integer between 0 and 99.
     The known color names can be found in the :class:`colors` class of this
     module.
@@ -158,6 +162,10 @@ def _get_hex_color(color):
 def hex_color(text, fg=None, bg=None):
     """Return the text, with the given colors applied in IRC formatting.
 
+    :param str text: a string of text to apply color formatting to
+    :param str fg: the color code to use for the text's foreground
+    :param str bg: the color code to use for the text's background
+
     The color can be provided with a string of either 3 or 6 hexadecimal digits.
     As in CSS, 3-digit colors will be interpreted as if they were 6-digit colors
     with each digit repeated (e.g. color ``c90`` is identical to ``cc9900``).
@@ -176,22 +184,33 @@ def hex_color(text, fg=None, bg=None):
 
 
 def bold(text):
-    """Return the text, with bold IRC formatting."""
+    """Return the text, with bold IRC formatting.
+
+    :param str text: a string of text to apply bold formatting to
+    """
     return ''.join([CONTROL_BOLD, text, CONTROL_BOLD])
 
 
 def italic(text):
-    """Return the text, with italic IRC formatting."""
+    """Return the text, with italic IRC formatting.
+
+    :param str text: a string of text to apply italic formatting to
+    """
     return ''.join([CONTROL_ITALIC, text, CONTROL_ITALIC])
 
 
 def underline(text):
-    """Return the text, with underline IRC formatting."""
+    """Return the text, with underline IRC formatting.
+
+    :param str text: a string of text to apply underline formatting to
+    """
     return ''.join([CONTROL_UNDERLINE, text, CONTROL_UNDERLINE])
 
 
 def strikethrough(text):
     """Return the text, with strikethrough IRC formatting.
+
+    :param str text: a string of text to apply strikethrough formatting to
 
     Note: This is a relatively new addition to IRC formatting conventions.
     Use only when you can afford to have its meaning lost, as not many clients
@@ -202,6 +221,8 @@ def strikethrough(text):
 def monospace(text):
     """Return the text, with monospace IRC formatting.
 
+    :param str text: a string of text to apply monospaced formatting to
+
     Note: This is a relatively new addition to IRC formatting conventions.
     Use only when you can afford to have its meaning lost, as not many clients
     support it yet."""
@@ -210,6 +231,8 @@ def monospace(text):
 
 def reverse(text):
     """Return the text, with reverse-color IRC formatting.
+
+    :param str text: a string of text to apply reverse formatting to
 
     Note: This code isn't super well supported, and its behavior even in clients
     that understand it (e.g. mIRC) can be unpredictable. Use it carefully."""
